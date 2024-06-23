@@ -11,18 +11,20 @@ import { Valutes } from '../entity/vatues';
   imports: [UIModule, CommonModule],
 })
 export class ConventerComponent implements OnInit {
-  @Input() items: Valutes[] | undefined = [];
-  public moneycode : Valutes[] | undefined = [];
 
+  public MoneyCourse: number | undefined;
   constructor(){
-    this.moneycode = this.items
+
   }
 
   ngOnInit(): void {
-
+    
   }
   ngOnChanges(): void {
-    console.log(this.items)
     
+  }
+
+  ObChangeSelectedValute(data: Valutes) {
+    this.MoneyCourse = data.Value;
   }
 }

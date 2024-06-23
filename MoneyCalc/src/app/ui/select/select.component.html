@@ -2,9 +2,9 @@
     <div class="selector_block">Dol</div>
     <div class="selector_block">Euro</div>
     <div class="selector_block">Rub</div>
-    <select class="selector_select">
-        @for (money of moneylist; track $index) {
-            <option>{{money.Nominal}}</option>
+    <select [(ngModel)]="selected" class="selector_select">
+        @for (item of list; track $index) {
+            <option value="{{item.Value}}">{{item.CharCode}}</option>
         }
     </select>
 </nav>

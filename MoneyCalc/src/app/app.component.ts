@@ -19,10 +19,6 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this._money.getValutes().subscribe((resp)=>{
-      console.log("Получены данные с сайта ЦБ")
-      console.log(resp.Valute)
-      this.moneylist = resp.Valute
-    })
+
   }
 }
