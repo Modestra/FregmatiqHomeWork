@@ -8,15 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class ApiMoneyService {
 
-  constructor(private _http: HttpClient) { }
+  private http:HttpClient;
+  constructor(private _http: HttpClient) {
+    this.http = this._http
+   }
 
   getValutes(): Observable<ValutesBody> {
     return this._http.get<ValutesBody>("https://www.cbr-xml-daily.ru/daily_json.js", {
       headers: new HttpHeaders({
-        "Accept": "text/plain",
-        'Access-Control-Allow-Origin': '*',
-        responseType: "json",
-      })
+        "Accept": "application/json",
+      }, )
     })
   }
 }

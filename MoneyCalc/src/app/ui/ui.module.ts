@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtomComponent } from './buttom/buttom.component';
+import { SelectComponent } from './select/select.component';
 
 
 
@@ -8,10 +9,12 @@ import { ButtomComponent } from './buttom/buttom.component';
   declarations: [],
   imports: [
     ButtomComponent,
+    SelectComponent,
     CommonModule
   ],
   exports: [
-    ButtomComponent
+    ButtomComponent,
+    SelectComponent
   ]
 })
 export class UIModule { }

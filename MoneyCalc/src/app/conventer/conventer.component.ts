@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UIModule } from '../ui/ui.module';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { ApiMoneyService } from '../services/api-money.service';
 import { Valutes } from '../entity/vatues';
 
 @Component({
@@ -13,16 +11,18 @@ import { Valutes } from '../entity/vatues';
   imports: [UIModule, CommonModule],
 })
 export class ConventerComponent implements OnInit {
-  ;
-  public items: Valutes[] = [];
-  constructor(private _apimoney: ApiMoneyService) {
-    fetch("../entity/valute.json").then((resp : any)=>{
-      this.items = resp.json();
-      console.log(this.items)
-    })
+  @Input() items: Valutes[] | undefined = [];
+  public moneycode : Valutes[] | undefined = [];
+
+  constructor(){
+    this.moneycode = this.items
   }
 
   ngOnInit(): void {
 
+  }
+  ngOnChanges(): void {
+    console.log(this.items)
+    
   }
 }
