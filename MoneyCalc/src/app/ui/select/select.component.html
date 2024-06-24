@@ -1,10 +1,10 @@
 <nav class="selector_body">
-    <div class="selector_block">Dol</div>
-    <div class="selector_block">Euro</div>
-    <div class="selector_block">Rub</div>
-    <select [(ngModel)]="selected" class="selector_select">
+    <button class="selector_block">Dol</button>
+    <button value="Dol" class="selector_block">Euro</button>
+    <button value="Dol" class="selector_block" type="menu"></button>
+    <select [(ngModel)]="test" (change)="PutOnChanges()" class="selector_select">
         @for (item of list; track $index) {
-            <option value="{{item.Value}}">{{item.CharCode}}</option>
+            <option [ngValue]="item.Value"><button (click)="PutOnChanges()">{{item.CharCode}}</button></option>
         }
     </select>
 </nav>

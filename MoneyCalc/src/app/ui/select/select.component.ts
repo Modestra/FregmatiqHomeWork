@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, OnInit, Output } from '@angular/core';
 import { Valutes } from '../../entity/vatues';
 import { ApiMoneyService } from '../../services/api-money.service';
 import { FormsModule } from '@angular/forms';
@@ -13,24 +13,25 @@ import { FormsModule } from '@angular/forms';
 })
 export class SelectComponent implements OnInit {
 
-    @Output() selected = new EventEmitter<Valutes>()
-    public moneylist:Valutes[] | undefined = []
-    public list: Valutes[] | undefined = []
-    constructor(private _money: ApiMoneyService){
+  @Output() selected = new EventEmitter<string>()
+  public moneylist: Valutes[] | undefined = []
+  public list: Valutes[] | undefined = []
+  public test: any = ''
+  constructor(private _money: ApiMoneyService) {
 
-    }
-    ngOnInit(): void {
-      this._money.getValutes().subscribe((resp)=>{
-        this.moneylist = resp.Valute
-        this.list = Object.values(this.moneylist).map((values)=>{
-          return values
-        })
-        console.log(this.list)
-
+  }
+  ngOnInit(): void {
+    this._money.getValutes().subscribe((resp) => {
+      this.moneylist = resp.Valute
+      this.list = Object.values(this.moneylist).map((values) => {
+        return values
       })
-    }
+    })
+  }
 
-    ngOnChanges(): void {
-      console.log("Значение выбрано", this.selected)
-    }
+  PutOnChanges() {
+    console.log("Отправка изменений")
+    console.log()
+    this.selected.emit(this.test)
+  }
 }

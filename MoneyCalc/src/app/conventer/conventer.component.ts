@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { UIModule } from '../ui/ui.module';
 import { CommonModule } from '@angular/common';
-import { Valutes } from '../entity/vatues';
 
 @Component({
   selector: 'conventer',
@@ -13,18 +12,15 @@ import { Valutes } from '../entity/vatues';
 export class ConventerComponent implements OnInit {
 
   public MoneyCourse: number | undefined;
-  constructor(){
+  constructor() {
 
   }
 
   ngOnInit(): void {
-    
-  }
-  ngOnChanges(): void {
-    
+
   }
 
-  ObChangeSelectedValute(data: Valutes) {
-    this.MoneyCourse = data.Value;
+  ObChangeSelectedValute(data: any) {
+    this.MoneyCourse = data;
   }
 }
