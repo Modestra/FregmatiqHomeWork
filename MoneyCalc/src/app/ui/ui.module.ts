@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtomComponent } from './buttom/buttom.component';
-import { SelectComponent } from './select/select.component';
 import { FormsModule } from '@angular/forms';
+import { InputComponent } from './input/input.component';
 
 
 
@@ -10,13 +10,13 @@ import { FormsModule } from '@angular/forms';
   declarations: [],
   imports: [
     ButtomComponent,
-    SelectComponent,
+    InputComponent,
     CommonModule,
     FormsModule
   ],
   exports: [
     ButtomComponent,
-    SelectComponent
+    InputComponent
   ]
 })
 export class UIModule { }

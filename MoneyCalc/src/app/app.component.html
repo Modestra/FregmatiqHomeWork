@@ -1,11 +1,19 @@
-<div class="container">
-  <header class="header">
-    <p>Актуальный курс валют</p>
-  </header>
-  <div class="main-block">
-      <section class="money-catalog">
-        <conventer></conventer>
-        <conventer></conventer>
-      </section>
+<div class="card">
+  <div class="card-header">
+    Конвентер Валют
   </div>
+  <section class="card-body">
+    <section class="money-catalog">
+      <conventer [MoneyCourse]="moneylist"></conventer>
+      <conventer [MoneyCourse]="moneylist"></conventer>
+    </section>
+    <form class="card" style="width: 100%;">
+      <div class="card-header">
+        Сохранить форму
+      </div>
+      <div class="card-body">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+      </div>
+    </form>
+  </section>
 </div>

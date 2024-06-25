@@ -8,17 +8,21 @@ import { Valutes } from './entity/vatues';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UIModule, ConventerModule],
+  imports: [RouterOutlet, ConventerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   public moneylist: Valutes[] | undefined = []
-  constructor(private _money: ApiMoneyService){
+  constructor(private _money: ApiMoneyService) {
 
   }
   ngOnInit(): void {
-
+    this._money.getValutes().subscribe((resp) => {
+      this.moneylist = Object.values(resp.Valute)
+      console.log(this.moneylist)
+    })
   }
+
 }

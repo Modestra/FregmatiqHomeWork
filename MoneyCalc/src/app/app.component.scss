@@ -1,7 +1,9 @@
-.container{
+.card{
     width: 95vw;
-    border-radius: 15px;
-    border: 1px solid black;
+
+    &_body > .card{
+        width: 100%;
+    }
 }
 header{
     width: 100%;
@@ -32,7 +34,6 @@ header p{
     height: 450px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
-    border: 1px solid rgb(112, 112, 112);
 }
 .add-money{
     margin-top: 10px;

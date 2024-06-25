@@ -1,3 +1,14 @@
 <section class="calc">
-    <Selector (selected)="ObChangeSelectedValute($event)"></Selector>
+    <p>{{title}}</p>
+    <nav class="selector_body">
+        <button class="selector_block">Dol</button>
+        <button value="Dol" class="selector_block">Euro</button>
+        <button value="Dol" class="selector_block" type="menu"></button>
+        <select [(ngModel)]="test" (change)="PutOnChanges()" class="selector_select">
+            @for (item of MoneyCourse; track $index) {
+                <option [ngValue]="item.Value"><button>{{item.Name}} - {{item.CharCode}}</button></option>
+            }
+        </select>
+    </nav>
+    <ModInput></ModInput>
 </section>
