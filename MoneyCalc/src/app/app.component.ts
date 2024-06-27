@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UIModule } from './ui/ui.module';
 import { ApiMoneyService } from './services/api-money.service';
 import { ConventerModule } from './conventer/conventer.module';
 import { Valutes } from './entity/vatues';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
 
 @Component({
   selector: 'app-root',

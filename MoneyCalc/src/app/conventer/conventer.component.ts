@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { UIModule } from '../ui/ui.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Valutes } from '../entity/vatues';
 import { FormsModule } from '@angular/forms';
 
@@ -15,12 +15,28 @@ export class ConventerComponent implements OnInit {
 
   @Input() title: string = '';
   @Input() MoneyCourse: Valutes[] | undefined = [];
-  public test: number = 0;
+  @Input() MoneyResult: Valutes[] | undefined = [];
+
+  //Избранные валюты
+  public VatuleFeatured: Valutes[] | undefined = [];
+
+  //Курс валют
+  public startCource: number = 0;
+  public resultCource: number = 0;
+
+  //Первый Input
+  public start: number = 0;
+  //Второй Input
+  public result: number = 0;
   constructor() {
 
   }
 
   ngOnInit(): void {
+
+  }
+  ngOnChanges(): void {
+    this.result = (this.start * this.startCource) / this.resultCource
 
   }
 
@@ -29,6 +45,9 @@ export class ConventerComponent implements OnInit {
   }
 
   PutOnChanges() {
-    console.log(this.test)
+    this.result = (this.start * this.startCource) / this.resultCource
+  }
+  GetValue() {
+    console.log()
   }
 }
