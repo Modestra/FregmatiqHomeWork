@@ -15,3 +15,10 @@ export interface Valutes {
     Value: number,
     Previous: number
 }
+
+export interface ConvertCoupe {
+    start: number,
+    startCode: number,
+    result: number,
+    resultCode: number
+}

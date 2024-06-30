@@ -6,7 +6,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
-import { metaReduces, reducers } from './reducers';
+import { reducers } from './reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideHttpClient(), provideStore(reducers), provideEffects(), provideRouterStore()]

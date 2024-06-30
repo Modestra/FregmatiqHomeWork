@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header">
+      Конвентер Валют
+    </div>
+    <section class="card-body">
+        <conventer [MoneyCourse]="moneylist" [MoneyResult]="moneylist"></conventer>
+        <button (click)="CreateContainer()" style="margin-bottom: 10px;" type="button" class="btn btn-primary">Создать пару чисел</button>
+      <form class="card" style="width: 100%;">
+        <div class="card-header">
+          Сохранить форму
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Валюта</th>
+                <th scope="col">Номинал</th>
+                <th scope="col">Валюта</th>
+                <th scope="col">Номинал</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>link</td>
+                <td>link</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>link</td>
+                <td>link</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>link</td>
+                <td>link</td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+      </form>
+    </section>
+  </div>

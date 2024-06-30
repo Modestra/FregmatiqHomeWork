@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ButtomComponent } from './buttom/buttom.component';
 import { FormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -12,7 +13,7 @@ import { InputComponent } from './input/input.component';
     ButtomComponent,
     InputComponent,
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     ButtomComponent,

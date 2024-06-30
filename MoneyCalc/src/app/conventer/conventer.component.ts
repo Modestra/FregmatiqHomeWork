@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UIModule } from '../ui/ui.module';
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Valutes } from '../entity/vatues';
 import { FormsModule } from '@angular/forms';
 
@@ -28,6 +28,7 @@ export class ConventerComponent implements OnInit {
   public start: number = 0;
   //Второй Input
   public result: number = 0;
+
   constructor() {
 
   }
@@ -35,9 +36,9 @@ export class ConventerComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
   ngOnChanges(): void {
     this.result = (this.start * this.startCource) / this.resultCource
-
   }
 
   ObChangeSelectedValute(data: any) {
