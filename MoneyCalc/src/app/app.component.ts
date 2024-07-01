@@ -17,21 +17,11 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 })
 export class AppComponent implements OnInit {
 
-  public moneylist: Valutes[] | undefined = []
-  private store = inject(Store)
-  conventer$?: Observable<any[]>;
-  constructor(private _money: ApiMoneyService) {
+  constructor() {
 
   }
   ngOnInit(): void {
-    this._money.getValutes().subscribe((resp) => {
-      this.moneylist = Object.values(resp.Valute)
-      console.log(this.moneylist)
-    })
-  }
 
-  CreateContainer() {
-    //this.store.dispatch(SetConvert())
   }
 
 }

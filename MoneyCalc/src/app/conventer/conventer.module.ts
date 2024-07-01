@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConventerComponent } from './conventer.component';
+import { FormComponent } from '../form/form.component';
 
 
 
@@ -8,7 +9,8 @@ import { ConventerComponent } from './conventer.component';
   declarations: [],
   imports: [
     CommonModule,
-    ConventerComponent
+    ConventerComponent,
+    FormComponent
   ],
   exports:[
     ConventerComponent
