@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, AfterViewChecked, AfterContentChecked } from '@angular/core';
 import { UIModule } from '../ui/ui.module';
 import { CommonModule } from '@angular/common';
-import { Valutes } from '../entity/vatues';
+import { ConvertCoupe, Valutes } from '../entity/vatues';
 import { FormsModule } from '@angular/forms';
 import { fromEvent, map } from 'rxjs';
 import { FormComponent } from '../form/form.component';
@@ -13,15 +13,12 @@ import { FormComponent } from '../form/form.component';
   styleUrl: './conventer.component.scss',
   imports: [UIModule, CommonModule, FormsModule, FormComponent],
 })
-export class ConventerComponent implements OnInit, AfterViewInit {
+export class ConventerComponent implements AfterContentChecked {
 
-  @Input() title: string = '';
-  @Input() MoneyCourse: Valutes[] | undefined = [];
-  @Input() MoneyResult: Valutes[] | undefined = [];
+  @Input({ required: true }) MoneyCourse: Valutes[] | undefined = [];
+  @Input({ required: true }) MoneyResult: Valutes[] | undefined = [];
 
-  
-
-  @ViewChild('InputValute') inputeValute : ElementRef | undefined;
+  @ViewChild('InputValute') inputeValute: ElementRef | undefined;
 
   //Избранные валюты
   public VatuleFeatured: Valutes[] | undefined = [];
@@ -35,30 +32,24 @@ export class ConventerComponent implements OnInit, AfterViewInit {
   //Второй Input
   public result: number = 0;
 
+  //Отдаваемый массив
+  public convertCoupe: ConvertCoupe = {
+    start: this.start,
+    startCode: this.startCource,
+    result: this.result,
+    resultCode: this.resultCource
+
+  };
+
   constructor() {
 
   }
 
-  ngOnInit(): void {
-
-  }
-
-  ngOnChanges(): void {
+  ngAfterContentChecked(): void {
     this.result = (this.start * this.startCource) / this.resultCource
-  }
-
-  ngAfterViewInit(): void {
-
   }
 
   ObChangeSelectedValute(data: any) {
     this.MoneyCourse = data;
-  }
-
-  PutOnChanges() {
-    this.result = (this.start * this.startCource) / this.resultCource
-  }
-  GetValue() {
-    console.log()
   }
 }

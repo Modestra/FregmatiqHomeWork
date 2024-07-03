@@ -2,7 +2,7 @@
     <section class="calc">
         <p>У меня есть</p>
         <nav class="selector_body">
-            <select [(ngModel)]="startCource" (change)="PutOnChanges()" class="selector_select">
+            <select [(ngModel)]="startCource" class="selector_select">
                 @for (item of MoneyCourse; track $index) {
                     <option [ngValue]="item.Value"><button>{{item.Name}} - {{item.CharCode}}</button></option>
                 }
@@ -13,7 +13,7 @@
     <section class="calc">
         <p>Хочу приобрести</p>
         <nav class="selector_body">
-            <select [(ngModel)]="resultCource" (change)="PutOnChanges()" class="selector_select">
+            <select [(ngModel)]="resultCource" class="selector_select">
                 @for (item of MoneyResult; track $index) {
                     <option [ngValue]="item.Value"><button>{{item.Name}} - {{item.CharCode}}</button></option>
                 }

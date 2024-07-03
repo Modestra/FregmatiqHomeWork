@@ -1,7 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Observable, take } from 'rxjs';
-import { State, Store, select } from '@ngrx/store';
-import { Valutes } from '../entity/vatues';
+import { AfterViewChecked, Component, ComponentRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { ConvertCoupe, Valutes } from '../entity/vatues';
 import { FormsModule } from '@angular/forms';
 import { ConventerComponent } from "../conventer/conventer.component";
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -16,24 +14,31 @@ import { FormComponent } from '../form/form.component';
   imports: [FormsModule, ConventerComponent, RouterLink, RouterLinkActive, RouterOutlet, FormComponent]
 })
 export class MainpageComponent implements OnInit {
-
-  public moneylist: Valutes[] | undefined = []
-  private store = inject(Store)
+  //Inject по шаблонному компоненту
+  @ViewChild('container', { read: ViewContainerRef }) container?: ViewContainerRef;
+  //Пройтись по дереву и определить компоненты класса контейнера
+  @ViewChildren(ConventerComponent) childConventers?: QueryList<ConventerComponent>;
+  public moneylist: Valutes[] | undefined = [];
+  convertcoupe: ConvertCoupe[] = [];
   constructor(private route: Router, private _money: ApiMoneyService) {
-
+    localStorage.setItem("convertcoupe", this.convertcoupe.toString());
   }
 
+  //Хуки
   ngOnInit(): void {
     this._money.getValutes().subscribe((resp) => {
       this.moneylist = Object.values(resp.Valute)
-      console.log(this.moneylist)
     })
   }
-  CreateContainer() {
-    //this.store.dispatch(SetConvert())
-  }
 
-  DedicateTo(){
+  CreateContainer() {
+    const component = this.container?.createComponent(ConventerComponent);
+    component?.setInput('MoneyCourse', this.moneylist);
+    component?.setInput('MoneyResult', this.moneylist);
+  }
+  SaveContainer() {
+  }
+  DedicateTo() {
     this.route.navigate(['/register'])
   }
 
