@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, AfterViewChecked, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, AfterViewChecked, AfterContentChecked, DoCheck } from '@angular/core';
 import { UIModule } from '../ui/ui.module';
 import { CommonModule } from '@angular/common';
 import { ConvertCoupe, Valutes } from '../entity/vatues';
@@ -13,7 +13,7 @@ import { FormComponent } from '../form/form.component';
   styleUrl: './conventer.component.scss',
   imports: [UIModule, CommonModule, FormsModule, FormComponent],
 })
-export class ConventerComponent implements AfterContentChecked {
+export class ConventerComponent implements DoCheck {
 
   @Input({ required: true }) MoneyCourse: Valutes[] | undefined = [];
   @Input({ required: true }) MoneyResult: Valutes[] | undefined = [];
@@ -45,9 +45,26 @@ export class ConventerComponent implements AfterContentChecked {
 
   }
 
-  ngAfterContentChecked(): void {
+  ngDoCheck(): void {
     this.result = (this.start * this.startCource) / this.resultCource
+    this.convertCoupe = {
+      start: this.start,
+      startCode: this.startCource,
+      result: this.result,
+      resultCode: this.resultCource
+
+    }
   }
+
+  /*ngAfterContentChecked(): void {
+    this.result = (this.start * this.startCource) / this.resultCource
+    this.convertCoupe = {
+      start: this.start,
+      startCode: this.startCource,
+      result: this.result,
+      resultCode: this.resultCource
+    }
+  }*/
 
   ObChangeSelectedValute(data: any) {
     this.MoneyCourse = data;

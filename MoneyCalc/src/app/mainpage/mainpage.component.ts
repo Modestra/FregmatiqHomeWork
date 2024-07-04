@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ComponentRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, ComponentRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { ConvertCoupe, Valutes } from '../entity/vatues';
 import { FormsModule } from '@angular/forms';
 import { ConventerComponent } from "../conventer/conventer.component";
@@ -19,9 +19,12 @@ export class MainpageComponent implements OnInit {
   //Пройтись по дереву и определить компоненты класса контейнера
   @ViewChildren(ConventerComponent) childConventers?: QueryList<ConventerComponent>;
   public moneylist: Valutes[] | undefined = [];
-  convertcoupe: ConvertCoupe[] = [];
+
+  //Основная форма для сохранённых пар чисел
+  public convertcoupe: ConvertCoupe[] = [];
+
   constructor(private route: Router, private _money: ApiMoneyService) {
-    localStorage.setItem("convertcoupe", this.convertcoupe.toString());
+
   }
 
   //Хуки
@@ -29,14 +32,21 @@ export class MainpageComponent implements OnInit {
     this._money.getValutes().subscribe((resp) => {
       this.moneylist = Object.values(resp.Valute)
     })
+    localStorage.setItem("convertcoupe", this.convertcoupe.toString());
   }
 
   CreateContainer() {
     const component = this.container?.createComponent(ConventerComponent);
     component?.setInput('MoneyCourse', this.moneylist);
     component?.setInput('MoneyResult', this.moneylist);
+    this.childConventers?.reset([...this.childConventers, component?.instance as ConventerComponent])
   }
   SaveContainer() {
+    this.convertcoupe = [];
+    this.childConventers?.forEach((coupe) => {
+      this.convertcoupe.push(coupe.convertCoupe)
+    })
+    console.log(this.convertcoupe)
   }
   DedicateTo() {
     this.route.navigate(['/register'])

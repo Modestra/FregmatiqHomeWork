@@ -14,29 +14,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>link</td>
-            <td>link</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>link</td>
-            <td>link</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>link</td>
-            <td>link</td>
-          </tr>
+          @for (item of storage; track $index) {
+            <tr>
+              <th scope="row">3</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>link</td>
+              <td>link</td>
+            </tr>
+          }
         </tbody>
       </table>
-      <button type="submit" class="btn btn-primary">Сохранить</button>
     </div>
   </form>

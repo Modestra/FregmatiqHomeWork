@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, Output } from '@angular/core';
 import { ConvertCoupe } from '../entity/vatues';
 
 @Component({
@@ -8,11 +8,15 @@ import { ConvertCoupe } from '../entity/vatues';
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
-export class FormComponent {
-  @Input() CoupeValute : ConvertCoupe[] = [];
+export class FormComponent implements DoCheck {
+  @Input() CoupeValute: ConvertCoupe[] = [];
   @Output() CoupeValuteChange = new EventEmitter<ConvertCoupe[]>();
+  public storage = localStorage.getItem('')
+  constructor() {
 
-  constructor(){
+  }
+
+  ngDoCheck(): void {
 
   }
 
