@@ -32,7 +32,6 @@ export class MainpageComponent implements OnInit {
     this._money.getValutes().subscribe((resp) => {
       this.moneylist = Object.values(resp.Valute)
     })
-    localStorage.setItem("convertcoupe", this.convertcoupe.toString());
   }
 
   CreateContainer() {
@@ -46,7 +45,6 @@ export class MainpageComponent implements OnInit {
     this.childConventers?.forEach((coupe) => {
       this.convertcoupe.push(coupe.convertCoupe)
     })
-    console.log(this.convertcoupe)
   }
   DedicateTo() {
     this.route.navigate(['/register'])

@@ -14,13 +14,13 @@
           </tr>
         </thead>
         <tbody>
-          @for (item of storage; track $index) {
+          @for (coupe of storage; track $index) {
             <tr>
-              <th scope="row">3</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>link</td>
-              <td>link</td>
+              <th scope="row">{{$index + 1}}</th>
+              <td>{{coupe.start}}</td>
+              <td>{{coupe.startCode}}</td>
+              <td>{{coupe.result}}</td>
+              <td>{{coupe.resultCode}}</td>
             </tr>
           }
         </tbody>

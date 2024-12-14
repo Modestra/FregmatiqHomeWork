@@ -56,16 +56,6 @@ export class ConventerComponent implements DoCheck {
     }
   }
 
-  /*ngAfterContentChecked(): void {
-    this.result = (this.start * this.startCource) / this.resultCource
-    this.convertCoupe = {
-      start: this.start,
-      startCode: this.startCource,
-      result: this.result,
-      resultCode: this.resultCource
-    }
-  }*/
-
   ObChangeSelectedValute(data: any) {
     this.MoneyCourse = data;
   }

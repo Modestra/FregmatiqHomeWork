@@ -13,7 +13,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 export class AppComponent implements OnInit {
 
   constructor() {
-    localStorage.setItem('coupes', '')
+
   }
   ngOnInit(): void {
 

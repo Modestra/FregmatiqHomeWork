@@ -1,4 +1,4 @@
-import { Component, DoCheck, EventEmitter, Input, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ConvertCoupe } from '../entity/vatues';
 
 @Component({
@@ -8,16 +8,18 @@ import { ConvertCoupe } from '../entity/vatues';
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
-export class FormComponent implements DoCheck {
+export class FormComponent implements OnChanges {
   @Input() CoupeValute: ConvertCoupe[] = [];
   @Output() CoupeValuteChange = new EventEmitter<ConvertCoupe[]>();
-  public storage = localStorage.getItem('')
+  public storage: ConvertCoupe[] | undefined = [];
   constructor() {
 
   }
 
-  ngDoCheck(): void {
-
+  ngOnChanges(changes: SimpleChanges): void {
+    localStorage.setItem('coupes', JSON.stringify(this.CoupeValute));
+    this.storage = JSON.parse(localStorage.getItem('coupes') || '{}') as ConvertCoupe[];
+    console.log(JSON.parse(localStorage.getItem('coupes') || '{}'))
   }
 
 }
