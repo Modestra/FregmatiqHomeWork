@@ -1,8 +1,8 @@
 import {
-  Component, OnInit, Input,
-  ViewChild, ElementRef, AfterViewChecked,
-  AfterContentChecked, DoCheck, AfterContentInit,
-  ContentChild
+  Component, Input,
+  ViewChild, ElementRef, DoCheck,
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 import { UIModule } from '../ui/ui.module';
 import { CommonModule } from '@angular/common';
@@ -17,13 +17,12 @@ import { FormComponent } from '../form/form.component';
   styleUrl: './conventer.component.scss',
   imports: [UIModule, CommonModule, FormsModule, FormComponent],
 })
-export class ConventerComponent implements DoCheck {
+export class ConventerComponent implements DoCheck, OnChanges {
 
   @Input({ required: true }) MoneyCourse: Valutes[] | undefined = [];
   @Input({ required: true }) MoneyResult: Valutes[] | undefined = [];
 
   @ViewChild('InputValute') inputeValute: ElementRef | undefined;
-  //@ContentChild(AnotherComponent) anotherComponent: AnotherComponent;
 
   //Избранные валюты
   public VatuleFeatured: Valutes[] | undefined = [];
@@ -55,6 +54,10 @@ export class ConventerComponent implements DoCheck {
       resultCode: this.resultCource
 
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("Входные данные", changes)
   }
 
   ObChangeSelectedValute(data: any) {

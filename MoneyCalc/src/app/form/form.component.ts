@@ -1,4 +1,4 @@
-import { Component, DoCheck, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ConvertCoupe } from '../entity/vatues';
 
 @Component({
@@ -12,9 +12,6 @@ export class FormComponent implements OnChanges {
   @Input() CoupeValute: ConvertCoupe[] = [];
   @Output() CoupeValuteChange = new EventEmitter<ConvertCoupe[]>();
   public storage: ConvertCoupe[] | undefined = [];
-  constructor() {
-
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     localStorage.setItem('coupes', JSON.stringify(this.CoupeValute));
