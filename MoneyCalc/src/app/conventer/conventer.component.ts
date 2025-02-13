@@ -1,9 +1,13 @@
-import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, AfterViewChecked, AfterContentChecked, DoCheck } from '@angular/core';
+import {
+  Component, OnInit, Input,
+  ViewChild, ElementRef, AfterViewChecked,
+  AfterContentChecked, DoCheck, AfterContentInit,
+  ContentChild
+} from '@angular/core';
 import { UIModule } from '../ui/ui.module';
 import { CommonModule } from '@angular/common';
 import { ConvertCoupe, Valutes } from '../entity/vatues';
 import { FormsModule } from '@angular/forms';
-import { fromEvent, map } from 'rxjs';
 import { FormComponent } from '../form/form.component';
 
 @Component({
@@ -19,6 +23,7 @@ export class ConventerComponent implements DoCheck {
   @Input({ required: true }) MoneyResult: Valutes[] | undefined = [];
 
   @ViewChild('InputValute') inputeValute: ElementRef | undefined;
+  //@ContentChild(AnotherComponent) anotherComponent: AnotherComponent;
 
   //Избранные валюты
   public VatuleFeatured: Valutes[] | undefined = [];
@@ -41,10 +46,6 @@ export class ConventerComponent implements DoCheck {
 
   };
 
-  constructor() {
-
-  }
-
   ngDoCheck(): void {
     this.result = (this.start * this.startCource) / this.resultCource
     this.convertCoupe = {
@@ -59,4 +60,9 @@ export class ConventerComponent implements DoCheck {
   ObChangeSelectedValute(data: any) {
     this.MoneyCourse = data;
   }
+
+  SaveContainer() {
+
+  }
+
 }

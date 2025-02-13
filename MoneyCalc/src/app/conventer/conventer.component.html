@@ -1,24 +1,38 @@
 <section class="money-catalog">
-    <section class="calc">
-        <p>У меня есть</p>
-        <nav class="selector_body">
-            <select [(ngModel)]="startCource" class="selector_select">
-                @for (item of MoneyCourse; track $index) {
-                    <option [ngValue]="item.Value"><button>{{item.Name}} - {{item.CharCode}}</button></option>
-                }
-            </select>
-        </nav>
-        <ModInput [(convert)]="start" #InputValute></ModInput>
-    </section>
-    <section class="calc">
-        <p>Хочу приобрести</p>
-        <nav class="selector_body">
-            <select [(ngModel)]="resultCource" class="selector_select">
-                @for (item of MoneyResult; track $index) {
-                    <option [ngValue]="item.Value"><button>{{item.Name}} - {{item.CharCode}}</button></option>
-                }
-            </select>
-        </nav>
-        <ModInput [(convert)]="result"></ModInput>
-    </section>
-</section>  
+  <section class="calc">
+    <p>У меня есть</p>
+    <nav class="selector_body">
+      <select [(ngModel)]="startCource" class="selector_select">
+        @for (item of MoneyCourse; track $index) {
+        <option [ngValue]="item.Value">
+          <button>{{ item.Name }} - {{ item.CharCode }}</button>
+        </option>
+        }
+      </select>
+    </nav>
+    <ModInput [(convert)]="start" #InputValute></ModInput>
+  </section>
+  <section class="calc">
+    <p>Хочу приобрести</p>
+    <nav class="selector_body">
+      <select [(ngModel)]="resultCource" class="selector_select">
+        @for (item of MoneyResult; track $index) {
+        <option [ngValue]="item.Value">
+          <button>{{ item.Name }} - {{ item.CharCode }}</button>
+        </option>
+        }
+      </select>
+    </nav>
+    <ModInput [(convert)]="result"></ModInput>
+  </section>
+</section>
+<article class="btn-menu">
+  <button
+    (click)="SaveContainer()"
+    style="margin-bottom: 10px"
+    type="button"
+    class="btn btn-success"
+  >
+    Сохранить
+  </button>
+</article>

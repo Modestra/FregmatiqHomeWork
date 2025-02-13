@@ -5,14 +5,14 @@ import { ConventerComponent } from "../conventer/conventer.component";
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ApiMoneyService } from '../services/api-money.service';
 import { FormComponent } from '../form/form.component';
-import { MatSelectModule } from '@angular/material/select';
+import { ConvertgroupComponent } from "../convertgroup/convertgroup.component";
 
 @Component({
   selector: 'app-mainpage',
   standalone: true,
   templateUrl: './mainpage.component.html',
   styleUrl: './mainpage.component.scss',
-  imports: [FormsModule, ConventerComponent, RouterLink, RouterLinkActive, RouterOutlet, FormComponent]
+  imports: [FormsModule, ConventerComponent, FormComponent, ConvertgroupComponent]
 })
 export class MainpageComponent implements OnInit {
   //Inject по шаблонному компоненту
@@ -41,12 +41,14 @@ export class MainpageComponent implements OnInit {
     component?.setInput('MoneyResult', this.moneylist);
     this.childConventers?.reset([...this.childConventers, component?.instance as ConventerComponent])
   }
+
   SaveContainer() {
     this.convertcoupe = [];
     this.childConventers?.forEach((coupe) => {
       this.convertcoupe.push(coupe.convertCoupe)
     })
   }
+
   DedicateTo() {
     this.route.navigate(['/register'])
   }
