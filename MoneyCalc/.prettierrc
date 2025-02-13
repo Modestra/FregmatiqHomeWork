@@ -1,0 +1,16 @@
+{
+  "printWidth": 80,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "semi": true,
+  "importOrder": [
+    "^@angular/(.*)$",
+    "^rxjs(.*)$",
+    "^(@ngneat|ngx|ng|date-fns|ng2|@ngrx)(.*)$",
+    "^(@services|@pages|@core|@env|@libs)(.*)$",
+    "(./|../)(.*)"
+  ],
+  "importOrderSeparation": true,
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
+}

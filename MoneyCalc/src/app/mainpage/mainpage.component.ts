@@ -1,10 +1,11 @@
-import { AfterContentChecked, AfterViewChecked, Component, ComponentRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { ConvertCoupe, Valutes } from '../entity/vatues';
 import { FormsModule } from '@angular/forms';
 import { ConventerComponent } from "../conventer/conventer.component";
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ApiMoneyService } from '../services/api-money.service';
 import { FormComponent } from '../form/form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-mainpage',

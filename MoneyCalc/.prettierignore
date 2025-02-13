@@ -1,0 +1,8 @@
+test/fixtures
+**/app/public
+node_modules
+e2e
+.vscode
+.angular
+/dist
+dist
